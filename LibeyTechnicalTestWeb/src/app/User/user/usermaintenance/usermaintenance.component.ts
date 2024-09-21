@@ -35,7 +35,7 @@ export class UsermaintenanceComponent implements OnInit {
   ) {
 
       this.form = this.fb.group({
-        documentNumber: ['', Validators.required,Validators.minLength(8),Validators.maxLength(11)],
+        documentNumber: ['', [Validators.required,Validators.minLength(8),Validators.maxLength(11)]],
         documentTypeId: [null, Validators.required],
         name: ['', [Validators.required, Validators.minLength(2)]],
         fathersLastName : ['', [Validators.required, Validators.minLength(2)]],
