@@ -11,6 +11,16 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure
         {
             _context = context;
         }
+
+        public IEnumerable<LibeyUserResponse> List(int page, int limit)
+        {
+            return _context.LibeyUsers
+            .Skip((page-1)*limit)
+            .Take(limit)
+            .ToList()
+            .Select(x=>x.ToResponse());
+        }
+
         public void Create(LibeyUser libeyUser)
         {
             _context.LibeyUsers.Add(libeyUser);
@@ -21,32 +31,23 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure
             _context.LibeyUsers.Update(libeyUser);
             _context.SaveChanges();
         }
-        
-        public void Delete(LibeyUser libeyUser)
+
+        public void Delete(string documentNumber)
         {
-            _context.LibeyUsers.Remove(libeyUser);
+            var elem = _context.LibeyUsers.FirstOrDefault(x => x.DocumentNumber.Equals(documentNumber));
+            if (elem == null) return;
+            _context.LibeyUsers.Remove(elem);
             _context.SaveChanges();
         }
+
         public LibeyUserResponse FindResponse(string documentNumber)
         {
 
-            var q = from libeyUser in _context.LibeyUsers.Where(x => x.DocumentNumber.Equals(documentNumber))
-                    select new LibeyUserResponse()
-                    {
-                        DocumentNumber = libeyUser.DocumentNumber,
-                        Active = libeyUser.Active,
-                        Address = libeyUser.Address,
-                        DocumentTypeId = libeyUser.DocumentTypeId,
-                        Email = libeyUser.Email,
-                        FathersLastName = libeyUser.FathersLastName,
-                        MothersLastName = libeyUser.MothersLastName,
-                        Name = libeyUser.Name,
-                        Password = libeyUser.Password,
-                        Phone = libeyUser.Phone
-                    };
+            var q = from libeyUser in _context.LibeyUsers
+                    .Where(x => x.DocumentNumber.Equals(documentNumber))
+                select libeyUser.ToResponse();
             var list = q.ToList();
-            if (list.Any()) return list.First();
-            else return new LibeyUserResponse();
+            return list.Any() ? list.First() : new LibeyUserResponse();
         }
     }
 }
