@@ -16,6 +16,17 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure
             _context.LibeyUsers.Add(libeyUser);
             _context.SaveChanges();
         }
+        public void Update(LibeyUser libeyUser)
+        {
+            _context.LibeyUsers.Update(libeyUser);
+            _context.SaveChanges();
+        }
+        
+        public void Delete(LibeyUser libeyUser)
+        {
+            _context.LibeyUsers.Remove(libeyUser);
+            _context.SaveChanges();
+        }
         public LibeyUserResponse FindResponse(string documentNumber)
         {
 

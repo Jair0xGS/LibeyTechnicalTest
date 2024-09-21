@@ -12,7 +12,19 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Application
         }
         public void Create(UserUpdateorCreateCommand command)
         {
-            throw new NotImplementedException();
+            //TODO add password encryption
+            _repository.Create(new LibeyUser(
+                command.DocumentNumber ,
+                command.DocumentTypeId ,
+                command.Name ,
+                command.FathersLastName ,
+                command.MothersLastName ,
+                command.Address ,
+                command.UbigeoCode ,
+                command.Phone ,
+                command.Email ,
+                command.Password 
+            ));
         }
         public LibeyUserResponse FindResponse(string documentNumber)
         {
