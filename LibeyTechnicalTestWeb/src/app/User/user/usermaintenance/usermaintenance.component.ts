@@ -35,7 +35,7 @@ export class UsermaintenanceComponent implements OnInit {
   ) {
 
       this.form = this.fb.group({
-        documentNumber: ['', Validators.required],
+        documentNumber: ['', Validators.required,Validators.minLength(8),Validators.maxLength(11)],
         documentTypeId: [null, Validators.required],
         name: ['', [Validators.required, Validators.minLength(2)]],
         fathersLastName : ['', [Validators.required, Validators.minLength(2)]],
@@ -45,7 +45,7 @@ export class UsermaintenanceComponent implements OnInit {
         provinceCode: [null, Validators.required],
         ubigeoCode: [null, Validators.required],
         phone: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]],
-        email: ['', [Validators.required, Validators.email]],
+        email: ['', [Validators.required, Validators.email, Validators.maxLength(20),Validators.minLength(3)]],
         password: ['', [Validators.required, Validators.minLength(6)]]
       });
    }
