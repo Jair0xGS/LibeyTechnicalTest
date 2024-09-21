@@ -6,7 +6,7 @@ import { LibeyUserService } from "src/app/core/service/libeyuser/libeyuser.servi
 	styleUrls: ["./usercards.component.css"],
 })
 export class UsercardsComponent implements OnInit {
-	constructor(private libeyUserService: LibeyUserService) {}
+	constructor( private libeyUserService: LibeyUserService) {}
 	ngOnInit(): void {
 		this.libeyUserService.Find("46257869").subscribe(response => {
 			console.log(response, "User");

@@ -16,8 +16,8 @@ public class UbigeoController:Controller
     
 
     [HttpGet]
-    [Route("{regionCode}/{provinceCode}")]
-    public IActionResult List(string regionCode,string provinceCode)
+    [Route("{provinceCode}/{regionCode}")]
+    public IActionResult List(string provinceCode,string regionCode)
     {
         var row = _aggregate.List(provinceCode,regionCode);
         return Ok(row);

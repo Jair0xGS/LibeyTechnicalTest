@@ -35,6 +35,8 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Domain
 
         public LibeyUserResponse ToResponse()
         {
+            var region = UbigeoCode.Substring(0, 2);
+            var province = UbigeoCode.Substring(0, 4);
             return new LibeyUserResponse()
             {
                 DocumentNumber = DocumentNumber,
@@ -46,7 +48,10 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Domain
                 MothersLastName = MothersLastName,
                 Name = Name,
                 Password = Password,
-                Phone = Phone
+                Phone = Phone,
+                UbigeoCode = UbigeoCode,
+                RegionCode = region,
+                ProvinceCode = province,
             };
         }
 
