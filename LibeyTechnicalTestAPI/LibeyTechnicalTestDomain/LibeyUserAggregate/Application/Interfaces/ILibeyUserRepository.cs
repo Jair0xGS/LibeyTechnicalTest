@@ -10,5 +10,6 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces
         void Create(LibeyUser libeyUser);
         void Update(LibeyUser libeyUser);
         void Delete(string documentNumber);
+        bool Exists(string documentNumber);
     }
 }

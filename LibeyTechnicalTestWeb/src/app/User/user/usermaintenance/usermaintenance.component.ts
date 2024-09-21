@@ -120,6 +120,8 @@ export class UsermaintenanceComponent implements OnInit {
           if(data){
             swal.fire("Exito!", "Usuario actualizado exitosamente!", "success");
             this.router.navigate(['/user/list']); // Replace with your desired route
+          }else{
+            swal.fire("Oops!", "No se pudo actualizar este usuario!", "error");
           }
         })
       }else{
@@ -127,6 +129,8 @@ export class UsermaintenanceComponent implements OnInit {
           if(data){
             swal.fire("Exito!", "Usuario guardado exitosamente!", "success");
             this.router.navigate(['/user/list']); // Replace with your desired route
+          }else{
+            swal.fire("Oops!", "No se pudo guardar este usuario!", "error");
           }
         })
       }

@@ -33,22 +33,46 @@ namespace LibeyTechnicalTestAPI.Controllers.LibeyUser
         [HttpPost]       
         public IActionResult Create(UserUpdateorCreateCommand command)
         {
-             _aggregate.Create(command);
-            return Ok(true);
+            try
+            {
+                _aggregate.Create(command);
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return Ok(false);
+            }
         }
         
         [HttpPut]       
         public IActionResult Update(UserUpdateorCreateCommand command)
         {
-             _aggregate.Update(command);
-            return Ok(true);
+            try
+            {
+                _aggregate.Update(command);
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return Ok(false);
+            }
         }
         
         [HttpDelete("{documentNumber}")]       
-        public IActionResult Update(string documentNumber)
+        public IActionResult Delete(string documentNumber)
         {
-             _aggregate.Delete(documentNumber);
-            return Ok(true);
+            try
+            {
+                _aggregate.Delete(documentNumber);
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return Ok(false);
+            }
         }
     }
 }

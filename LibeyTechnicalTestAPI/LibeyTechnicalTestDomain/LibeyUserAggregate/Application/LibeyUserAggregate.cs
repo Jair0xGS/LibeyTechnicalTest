@@ -21,17 +21,28 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Application
 
         public void Create(UserUpdateorCreateCommand command)
         {
-            //TODO add password encryption
+            if (_repository.Exists(command.DocumentNumber))
+            {
+                throw new Exception("usuario ya existe");
+            }
             _repository.Create(LibeyUser.FromCommand(command));
         }
 
         public void Update(UserUpdateorCreateCommand command)
         {
+            if (!_repository.Exists(command.DocumentNumber))
+            {
+                throw new Exception("usuario no existe");
+            }
             _repository.Update(LibeyUser.FromCommand(command));
         }
 
         public void Delete(string documentNumber)
         {
+            if (!_repository.Exists(documentNumber))
+            {
+                throw new Exception("usuario no existe");
+            }
             _repository.Delete(documentNumber);
         }
 

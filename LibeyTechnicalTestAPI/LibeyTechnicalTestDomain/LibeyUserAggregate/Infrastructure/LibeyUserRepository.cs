@@ -31,6 +31,11 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure
             _context.LibeyUsers.Update(libeyUser);
             _context.SaveChanges();
         }
+        public bool Exists(string documentNumber)
+        {
+            var rs =_context.LibeyUsers.Count(x => x.DocumentNumber == documentNumber);
+            return rs == 1;
+        }
 
         public void Delete(string documentNumber)
         {
