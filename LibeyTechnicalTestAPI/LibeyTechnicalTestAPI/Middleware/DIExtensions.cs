@@ -11,6 +11,9 @@ namespace LibeyTechnicalTestAPI.Middleware
             //aggregates
             services.AddTransient<ILibeyUserAggregate, LibeyUserAggregate>();
             services.AddTransient<IDocumentTypeAggregate, DocumentTypeAggregate>();
+            services.AddTransient<IRegionAggregate, RegionAggregate>();
+            services.AddTransient<IProvinceAggregate, ProvinceAggregate>();
+            services.AddTransient<IUbigeoAggregate, UbigeoAggregate>();
             //repos
             services.AddTransient<ILibeyUserRepository, LibeyUserRepository>();
             services.AddTransient<IDocumentTypeRepository, DocumentTypeRepository>();

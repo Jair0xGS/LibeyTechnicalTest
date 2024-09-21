@@ -7,7 +7,7 @@ namespace LibeyTechnicalTestDomain.EFCore.Configuration
     {
         public void Configure(EntityTypeBuilder<Ubigeo> builder)
         {
-            builder.ToTable("Ubigeo").HasKey(x => x.RegionCode);
+            builder.ToTable("Ubigeo").HasKey(x => x.UbigeoCode);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using LibeyTechnicalTestDomain.EFCore;
 using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.DTO;
 using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces;
+using LibeyTechnicalTestDomain.LibeyUserAggregate.Domain;
 
 namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure;
 

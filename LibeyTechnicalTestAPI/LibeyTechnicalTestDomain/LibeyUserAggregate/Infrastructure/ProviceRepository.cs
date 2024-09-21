@@ -22,7 +22,7 @@ public class ProviceRepository : IProvinceRepository
             {
                 RegionCode = province.RegionCode,
                 ProvinceCode = province.ProvinceCode,
-                ProvinceDescription = province.ProviceDescription,
+                ProvinceDescription = province.ProvinceDescription,
             });
     }
 }
